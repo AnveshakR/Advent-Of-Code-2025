@@ -18,8 +18,24 @@ def part1(banks):
     print("Day 1 Part 1:", val)
 
 def part2(banks):
-    
-    print("Day 1 Part 2:")
+    total = 0
+    for bank in banks:
+        n = len(bank)
+        picks = 12
+        result = []
+        start = 0
+        for pick in range(picks):
+            end = n - (picks - pick - 1)
+            best = -1
+            best_pos = start
+            for i in range(start, end):
+                if int(bank[i]) > best:
+                    best = int(bank[i])
+                    best_pos = i
+            result.append(bank[best_pos])
+            start = best_pos + 1
+        total += int(''.join(result))
+    print("Day 3 Part 2:", total)
 
 if __name__ == '__main__':        
     banks = []
